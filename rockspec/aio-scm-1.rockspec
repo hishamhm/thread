@@ -1,12 +1,12 @@
 package = "AIO"
 
-version = "cvs-1"
+version = "scm-1"
 
 description = {
   summary = "Lua Threads with Asynchronous IO",
   detailed = [[
   AIO implements asynchronous I/O primitives on top of
-  POSIX's O_NOBLOCK, plus a threading library that integrates
+  POSIX's O_NONBLOCK, plus a threading library that integrates
   with the I/O primitives and uses Libevent.
   ]],
   license = "MIT/X11",
@@ -24,7 +24,7 @@ external_dependencies = {
 }
 
 source = {
-   url = "http://alien.luaforge.net/aio-current.tar.gz"
+   url = "git://github.com/mascarenhas/thread.git"
 }
 
 build = {
@@ -34,6 +34,7 @@ build = {
       PREFIX = "$(PREFIX)"
    },
    build_variables = {
+      CONSTANTS = "$(CONSTANTS_DIR)/constants",
       CFLAGS = "$(CFLAGS)",
       LIBEVENT_INCDIR = "$(LIBEVENT_INCDIR)"
    }
