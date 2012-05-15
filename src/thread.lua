@@ -1,6 +1,5 @@
 
 require "alien"
-
 local struct = require "alien.struct"
 local table = table
 
@@ -211,9 +210,9 @@ local function socket_send(self, data, from, to)
   until false
 end
 
-local function socket_receive(self, pattern)
+local function socket_receive(self, pattern, part)
   local client = self.socket
-  local s, err, part
+  local s, err
   pattern = pattern or "*l"
   repeat
     s, err, part = client:receive(pattern, part)
@@ -225,9 +224,11 @@ local function socket_receive(self, pattern)
 end
 
 local function socket_flush(self)
+   return 1
 end
 
 local function socket_settimeout(self)
+   return 1
 end
 
 local function socket_accept(self)
